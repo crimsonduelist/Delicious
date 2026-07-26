@@ -4,7 +4,7 @@ set -e
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SRC_DIR="$PROJECT_DIR/src"
 BUILD_DIR="$PROJECT_DIR/build"
-MAIN_CLASS="delicious.Delicious"
+MAIN_CLASS="Delicious"
 
 # Clean build — remove stale class files
 echo "Cleaning build directory..."
@@ -37,7 +37,7 @@ else
 fi
 
 echo "Compiling..."
-javac -cp "$JDBC_JAR" -d "$BUILD_DIR" "$SRC_DIR"/delicious/*.java
+javac -cp "$JDBC_JAR" -d "$BUILD_DIR" "$SRC_DIR"/*.java
 
 echo "Running..."
 java -cp "$BUILD_DIR:$JDBC_JAR" "$MAIN_CLASS"
