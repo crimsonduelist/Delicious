@@ -1,0 +1,8 @@
+build/
+lib/
+*.class
+*.jar
+*.7z
+*.log
+.DS_Store
+nbproject/
