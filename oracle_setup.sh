@@ -19,7 +19,7 @@ echo "Starting Oracle XE container..."
 docker run -d \
     --name "$CONTAINER_NAME" \
     -p "$PORT:1521" \
-    -e ORACLE_PWD=oracle \
+    -e ORACLE_PASSWORD=oracle \
     "$IMAGE"
 
 echo "Waiting for Oracle to be ready..."

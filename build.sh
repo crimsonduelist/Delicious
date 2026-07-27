@@ -11,18 +11,8 @@ echo "Cleaning build directory..."
 rm -rf "$BUILD_DIR"
 mkdir -p "$BUILD_DIR"
 
-# Run Oracle setup (if Docker is available and Oracle not already running)
-if [ -x "$(command -v docker)" ]; then
-    if [ "$(docker ps -a -q -f name=oracle-xe)" ]; then
-        echo "Oracle XE container already exists — skipping setup."
-    else
-        echo "Setting up Oracle database..."
-        "$PROJECT_DIR/oracle_setup.sh"
-    fi
-else
-    echo "Docker not found — skipping Oracle setup."
-    echo "Make sure Oracle XE is running and accessible before running the app."
-fi
+# Setup database (Docker, schema, seed data)
+bash "$PROJECT_DIR/setup_db.sh"
 
 # Resolve ojdbc8.jar — prefer local lib/ then system path
 if [ -f "$PROJECT_DIR/lib/ojdbc8.jar" ]; then
